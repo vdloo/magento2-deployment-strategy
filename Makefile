@@ -8,16 +8,8 @@ DESCRIPTION := My demo Magento 2 shop for testing purposes
 devenv:
 	scripts/boot_vagrant
 	scripts/deploy_development
-#build:
-#	cd magento2 && composer update
-#	cd magento2 && bin/magento setup:upgrade
-#	cd magento2 && bin/magento setup:di:compile
-#	cd magento2 && bin/magento setup:static-content:deploy
-
-#test:
-#	./runtests.sh
 
 clean:
-	cd hypernode-vagrant && vagrant destroy -f 
+	[ -d hypernode-vagrant ] && (cd hypernode-vagrant && vagrant destroy -f) || /bin/true
 	rm -Rf hypernode-vagrant
-#	cd magento2; git clean -xfd
+	git clean -xfd
