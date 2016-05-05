@@ -12,3 +12,16 @@ magento_marketplace_private_key: "{{ lookup('env','MAGENTO_MARKETPLACE_PRIVATE_K
 # and then change the repo in magento2/composer.json to your own mirror
 
 magento_database_name: "magento"
+magento_database_host: "mysqlmaster"
+magento_database_user: "app"
+magento_backend_frontname: "admin"
+magento_base_url: "https://magento2.hypernode.local"
+magento_language: "en_US"
+magento_timezone: "Europe/Amsterdam"
+magento_currency: "EUR"
+magento_admin_lastname: "admin"
+magento_admin_firstname: "admin"
+magento_admin_email: "admin@example.com"
+magento_admin_user: "admin"
+magento_admin_password: "{{ lookup('env','MAGENTO_ADMIN_PASSWORD') }}"
+magento_use_rewrites: "1"

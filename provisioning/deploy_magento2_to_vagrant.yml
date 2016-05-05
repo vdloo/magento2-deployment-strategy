@@ -15,3 +15,25 @@
 
   - name: create database
     mysql_db: name={{ magento_database_name }} state=present
+
+  - name: run magento install setup
+    shell: /usr/bin/php bin/magento setup:install --db-host={{ magento_database_host }} --db-name={{ magento_database_name }} --db-user={{ magento_database_user }} --db-password=`cat ~/.my.cnf | grep password | awk '{print$NF}'` --backend-frontname={{ magento_backend_frontname }} --base-url={{ magento_base_url }} --language={{ magento_language }} --timezone={{ magento_timezone }} --currency={{ magento_currency }} --admin-lastname={{ magento_admin_lastname }} --admin-firstname={{ magento_admin_firstname }} --admin-email={{ magento_admin_email }} --admin-user={{ magento_admin_user }} --admin-password={{ magento_admin_password }} --cleanup-database --use-rewrites={{ magento_use_rewrites }}
+    args:
+      chdir: /data/web/public
+
+  - name: run magento upgrade setup
+    command: /usr/bin/php bin/magento setup:upgrade
+    args:
+      chdir: /data/web/public
+
+  # http://devdocs.magento.com/guides/v2.0/config-guide/cli/config-cli-subcommands-compiler.html
+  - name: run the single-tenant compiler (takes a while)
+    command: /usr/bin/php bin/magento setup:di:compile
+    args:
+      chdir: /data/web/public
+
+  - name: deploy static content
+    command: /usr/bin/php bin/magento setup:static-content:deploy
+    args:
+      chdir: /data/web/public
+

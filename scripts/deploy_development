@@ -5,6 +5,7 @@ set -e
 
 [ -z $MAGENTO_MARKETPLACE_PUBLIC_KEY ] && echo "please set MAGENTO_MARKETPLACE_PUBLIC_KEY in your environment" && /bin/false
 [ -z $MAGENTO_MARKETPLACE_PRIVATE_KEY ] && echo "please set MAGENTO_MARKETPLACE_PRIVATE_KEY in your environment" && /bin/false
+[ -z $MAGENTO_ADMIN_PASSWORD ] && echo "please set MAGENTO_ADMIN_PASSWORD in your environment" && /bin/false
 
 # get running vagrant ip
 BOX_IP=$(cd hypernode-vagrant; vagrant ssh -- ip route | awk 'END{print $NF}')
