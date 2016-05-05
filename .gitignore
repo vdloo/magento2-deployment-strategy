@@ -60,9 +60,11 @@ atlassian*
 
 /*.*
 
+/update
+/phpserver
+
 !/composer.json
 !/composer.lock
 !/README.md
 
-/update
-/phpserver
+!/app/etc/config.php
