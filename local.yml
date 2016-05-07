@@ -1,5 +1,5 @@
 fs:
-  type: nfs
+  type: virtualbox
   folders:
     magento:
       host: data/web/public/
