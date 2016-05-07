@@ -1,0 +1,14 @@
+# Deploy Magento2 to Vagrant
+---
+- hosts: all
+  tasks:
+  - name: ensure composer directory exists
+    file: path=/data/web/.composer state=directory owner=app group=app
+
+  - name: store credentials for repo.magento.com
+    template: src=templates/auth.json.j2 dest=/data/web/.composer/auth.json owner=app group=app force=yes
+
+  - name: install or update composer dependencies (takes a while)
+    command: /usr/local/bin/composer update 
+    args:
+      chdir: /data/web/public

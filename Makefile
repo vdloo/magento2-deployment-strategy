@@ -7,9 +7,9 @@ DESCRIPTION := My demo Magento 2 shop for testing purposes
 
 devenv:
 	scripts/boot_vagrant
-	scripts/deploy_development
-update:
-	scripts/deploy_development
+	scripts/update_composer
+deploy:
+	scripts/deploy_shop
 clean:
 	[ -d hypernode-vagrant ] && (cd hypernode-vagrant && vagrant destroy -f) || /bin/true
 	rm -Rf hypernode-vagrant

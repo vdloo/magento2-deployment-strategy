@@ -15,4 +15,4 @@ echo "Registered ip: $BOX_IP"
 export ANSIBLE_HOST_KEY_CHECKING=False
 
 # deploy current revision to vagrant
-ansible-playbook provisioning/deploy_magento2_to_vagrant.yml --extra-vars "@vars_development.yml" --user=app -i "$BOX_IP," # mind the trailing comma
+ansible-playbook provisioning/update_composer.yml --extra-vars "@vars_development.yml" --user=app -i "$BOX_IP," # mind the trailing comma
