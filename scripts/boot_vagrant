@@ -35,3 +35,5 @@ vagrant box update || /bin/true  # don't fail if the box hasn't been added yet
 # boot new vagrant instance
 vagrant up
 
+# give the sshd a short while to start
+sleep 5
