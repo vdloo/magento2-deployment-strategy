@@ -11,7 +11,7 @@
   - name: install or update composer dependencies (takes a while)
     command: /usr/local/bin/composer update 
     args:
-      chdir: /data/web/public
+      chdir: /data/web/magento2
 
   - name: create database
     mysql_db: name={{ magento_database_name }} state=present
